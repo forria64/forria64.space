@@ -1,0 +1,80 @@
+/* FORRIA64.SPACE STYLING */
+
+body {
+position: absolute;
+top: 0; bottom: 0; left: 0; right: 0;
+font-size: 10px;
+font-family: 'Courier New', Courier, monospace;
+background-color: #000000;
+color: #fcc000;
+text-align: left;
+display: flex;
+align-items: center;
+max-width: max-content;
+max-height: max-content;
+min-width: max-content;
+min-height: max-content;
+margin: auto;
+padding:10px;
+}
+
+.phyxls {
+color: #9e00ff;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #9e00ff;
+padding: 3px;
+transition:0.3s;
+}
+
+.phyxls:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #FF0000;
+padding: 3px;
+}
+
+.contact {
+color: #ff7000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #ff7000;
+padding: 3px;
+padding-top:5px;
+transition:0.3s;
+}
+
+.contact:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #FF0000;
+padding: 3px;
+padding-top:5px;
+}
+
+pre {
+border: 2px dashed #fcc000;
+padding: 20px;
+transition:1s;
+}
+
+pre:hover {
+border: 2px dashed #ff0000;
+padding: 10px;
+}
+
+.blink { 
+color: #ff0000;
+animation: animate 1s infinite; 
+}
+  
+@keyframes animate { 
+100% { 
+opacity: 1; 
+} 
+0% {
+opacity: 0;
+}
+}
