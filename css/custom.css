@@ -3,7 +3,7 @@
 body {
 position: absolute;
 top: 0; bottom: 0; left: 0; right: 0;
-font-size: 10px;
+font-size: 15px;
 font-family: 'Courier New', Courier, monospace;
 background-color: #000000;
 color: #fcc000;
@@ -18,6 +18,12 @@ margin: auto;
 padding:10px;
 }
 
+@media only screen and (max-width: 900px) {
+body {
+font-size: 9px;
+}
+}
+
 .phyxls {
 color: #9e00ff;
 text-decoration: underline;
@@ -25,6 +31,7 @@ text-decoration-color: #000000;
 border: 2px solid #9e00ff;
 padding: 3px;
 transition:0.3s;
+
 }
 
 .phyxls:hover {
@@ -41,8 +48,11 @@ text-decoration: underline;
 text-decoration-color: #000000;
 border: 2px solid #ff7000;
 padding: 3px;
-padding-top:5px;
+padding-top: 5px;
+padding-left: 5px;
+padding-right: 5px;
 transition:0.3s;
+
 }
 
 .contact:hover {
@@ -50,14 +60,23 @@ color: #FF0000;
 text-decoration: underline;
 text-decoration-color: #000000;
 border: 2px solid #FF0000;
-padding: 3px;
-padding-top:5px;
 }
 
 pre {
+width: 593px;
+height: 558px;
 border: 2px dashed #fcc000;
 padding: 20px;
 transition:1s;
+overflow: scroll;
+backdrop-filter: brightness(30%);
+}
+
+@media only screen and (max-width: 900px) {
+pre {
+width: 355px;
+height: 341px;
+}
 }
 
 pre:hover {
@@ -78,3 +97,24 @@ opacity: 1;
 opacity: 0;
 }
 }
+
+.creed {
+color: #fcc000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #fcc000;
+padding: 3px;
+padding-top:5px;
+transition:0.3s;
+
+}
+
+.creed:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #FF0000;
+padding: 3px;
+padding-top:5px;
+}
+
