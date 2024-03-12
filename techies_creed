@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>THE TECHIE'S CREED</title>
+  <title>A TECHIE'S CREED</title>
   <meta property="og:title" content="FORRIA'S SPACE">
-  <meta property="og:description" content="THE TECHIE'S CREED">
+  <meta property="og:description" content="A TECHIE'S CREED">
   <meta property="og:image" content="/images/wave_banner.gif">
   <meta property="og:url" content="https://forria64.space/techies_creed">
   <meta property="og:type" content="website">
@@ -13,7 +13,7 @@
   <meta property="og:image:height" content="630"/>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FORRIA'S SPACE">
-  <meta name="twitter:description" content="THE TECHIE'S CREED">
+  <meta name="twitter:description" content="A TECHIE'S CREED">
   <meta name="twitter:image" content="/images/wave_banner.gif">
   <link rel="icon" href="/images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="/css/custom.css">
