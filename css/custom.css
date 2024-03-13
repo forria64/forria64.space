@@ -128,3 +128,22 @@ padding-right: 6px;
 padding-left: 6px;
 }
 }
+
+.back-to-home {
+color: #fcc000;
+text-decoration: underline;
+border: 2px solid #fcc000;
+padding: 3px;
+padding-top:5px;
+transition:0.3s;
+}
+
+.back-to-home:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #ff0000;
+border: 2px solid #FF0000;
+padding: 3px;
+padding-top:5px;
+}
+
