@@ -147,3 +147,20 @@ padding: 3px;
 padding-top:5px;
 }
 
+.claxonul {
+color: #ffffff;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #ffffff;
+padding: 3px;
+transition:0.3s;
+
+}
+
+.claxonul:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #FF0000;
+padding: 3px;
+}
