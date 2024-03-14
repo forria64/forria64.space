@@ -18,7 +18,7 @@
   <link rel="icon" href="/images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="/css/custom.css">
 </head>
-<body style="background-image: url(/images/wave.gif);  background-repeat: repeat-y; background-blend-mode: multiply; background-color: #FCC000;">
+<body style="background-image: url(/images/wave.gif);  background-repeat: repeat-y; background-blend-mode: multiply; background-color: #003366;">
 	<strong>
 	  <pre>
 <font style="color: #ff0000;">░░░░░░░░ ░░░░░░░  ░░░░░░ ░░   ░░ ░░ ░░░░░░░  ░░ ░░░░░░░     
