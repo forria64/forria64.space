@@ -68,7 +68,6 @@ height: 558px;
 border: 2px dashed #fcc000;
 padding: 20px;
 transition:1s;
-overflow: scroll;
 backdrop-filter: blur(10%);
 }
 
