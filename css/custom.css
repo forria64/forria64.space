@@ -68,7 +68,6 @@ height: 558px;
 border: 2px dashed #fcc000;
 padding: 20px;
 transition:1s;
-overflow: scroll;
 backdrop-filter: blur(10%);
 }
 
@@ -154,10 +153,27 @@ text-decoration-color: #000000;
 border: 2px solid #ffffff;
 padding: 3px;
 transition:0.3s;
-
 }
 
 .claxonul:hover {
+color: #FF0000;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #FF0000;
+padding: 3px;
+}
+
+
+.art {
+color: #00ff00;
+text-decoration: underline;
+text-decoration-color: #000000;
+border: 2px solid #00ff00;
+padding: 3px;
+transition:0.3s;
+}
+
+.art:hover {
 color: #FF0000;
 text-decoration: underline;
 text-decoration-color: #000000;
