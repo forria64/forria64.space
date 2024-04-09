@@ -20,7 +20,7 @@
 </head>
 <body style="background-image: url(/images/wave.gif);  background-repeat: repeat-y; background-blend-mode: multiply; background-color: #003366;">
 	<strong>
-	  <pre>
+	  <pre style="overflow-y: scroll;">
 <font style="color: #ff0000;">░░░░░░░░ ░░░░░░░  ░░░░░░ ░░   ░░ ░░ ░░░░░░░  ░░ ░░░░░░░     
    ▒▒    ▒▒      ▒▒      ▒▒   ▒▒ ▒▒ ▒▒       ▒  ▒▒           
    ▒▒    ▒▒▒▒▒   ▒▒      ▒▒▒▒▒▒▒ ▒▒ ▒▒▒▒▒       ▒▒▒▒▒▒▒     
