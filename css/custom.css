@@ -34,6 +34,17 @@ font-size: 9px;
 }
 }
 
+.link {
+text-decoration: underline;
+text-decoration-color: #FF7000;
+color: #FF7000;
+}
+
+.link:hover {
+text-decoration-color: #FF0000;
+color: #FF0000;
+}
+
 .phyxls {
 color: #9e00ff;
 text-decoration: underline;
