@@ -1,8 +1,8 @@
 /* FORRIA64.SPACE STYLING */
 
 body {
-position: absolute;
-top: 0; bottom: 0; left: 0; right: 0;
+position: relative;
+top: 100; bottom: 0; left: 0; right: 0;
 font-size: 15px;
 font-family: 'Courier New', Courier, monospace;
 background-color: #000000;
@@ -15,7 +15,17 @@ max-height: max-content;
 min-width: max-content;
 min-height: max-content;
 margin: auto;
-padding:10px;
+padding-top:10%;
+padding-bottom: 10px;
+padding-left: 10px;
+padding-right: 10px;
+overflow-x: hidden;
+background-attachment: fixed;
+transition: background-image 3s ease, background-color 3s ease;
+}
+
+.scroll-target {
+scroll-snap-align: start; /* For smooth scrolling */
 }
 
 @media only screen and (max-width: 900px) {
@@ -64,9 +74,9 @@ border: 2px solid #FF0000;
 
 pre {
 width: 593px;
-height: 558px;
+height: auto;
 border: 2px dashed #fcc000;
-padding: 20px;
+padding: 10px;
 transition:1s;
 backdrop-filter: blur(10%);
 }
@@ -74,13 +84,8 @@ backdrop-filter: blur(10%);
 @media only screen and (max-width: 900px) {
 pre {
 width: 355px;
-height: 341px;
+height: auto;
 }
-}
-
-pre:hover {
-border: 2px dashed #ff0000;
-padding: 10px;
 }
 
 .blink { 
