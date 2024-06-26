@@ -88,6 +88,7 @@ width: 593px;
 height: auto;
 border: 2px dashed #fcc000;
 padding: 10px;
+margin: auto;
 transition:1s;
 backdrop-filter: blur(10%);
 }
