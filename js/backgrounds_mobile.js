@@ -13,7 +13,7 @@ window.addEventListener('scroll', function() {
     ];
 
     const windowHeight = window.innerHeight;
-    const windowTop = window.scrollY + 400;
+    const windowTop = window.scrollY;
     const windowBottom = windowTop + windowHeight;
 
     let visibleTarget = null;
@@ -24,10 +24,10 @@ window.addEventListener('scroll', function() {
         if (targetElement) {
             const targetRect = targetElement.getBoundingClientRect();
             const targetTop = targetRect.top + window.scrollY;
-            const targetBottom = targetTop + targetRect.height +400;
+            const targetBottom = targetTop + targetRect.height;
 
             // Determine if target is within viewport
-            if (targetTop <= windowTop && targetBottom >= windowTop && !visibleTarget) {
+            if (targetTop <= windowTop +1000 && targetBottom >= windowTop +600 && !visibleTarget) {
                 visibleTarget = target;
             }
         }
