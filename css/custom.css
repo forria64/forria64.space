@@ -45,10 +45,13 @@ text-decoration-color: #FF0000;
 color: #FF0000;
 }
 
+.button-link {
+text-decoration:none;
+}
+
 .phyxls {
 color: #9e00ff;
-text-decoration: underline;
-text-decoration-color: #000000;
+text-decoration: none;
 border: 2px solid #9e00ff;
 padding: 3px;
 transition:0.3s;
@@ -57,16 +60,13 @@ transition:0.3s;
 
 .phyxls:hover {
 color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #000000;
+text-decoration: none;
 border: 2px solid #FF0000;
 padding: 3px;
 }
 
 .contact {
 color: #ff7000;
-text-decoration: underline;
-text-decoration-color: #000000;
 border: 2px solid #ff7000;
 padding: 3px;
 padding-top: 5px;
@@ -78,8 +78,7 @@ transition:0.3s;
 
 .contact:hover {
 color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #000000;
+
 border: 2px solid #FF0000;
 }
 
@@ -111,88 +110,4 @@ opacity: 1;
 0% {
 opacity: 0;
 }
-}
-
-.creed {
-color: #fcc000;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #fcc000;
-padding: 3px;
-padding-top:5px;
-transition:0.3s;
-
-}
-
-.creed:hover {
-color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #FF0000;
-padding: 3px;
-padding-top:5px;
-}
-
-@media only screen and (max-width: 900px) {
-.creed {
-padding-right: 6px;
-padding-left: 6px;
-}
-.creed:hover {
-padding-right: 6px;
-padding-left: 6px;
-}
-}
-
-.back-to-home {
-color: #fcc000;
-text-decoration: underline;
-border: 2px solid #fcc000;
-padding: 3px;
-padding-top:5px;
-transition:0.3s;
-}
-
-.back-to-home:hover {
-color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #ff0000;
-border: 2px solid #FF0000;
-padding: 3px;
-padding-top:5px;
-}
-
-.claxonul {
-color: #ffffff;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #ffffff;
-padding: 3px;
-transition:0.3s;
-}
-
-.claxonul:hover {
-color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #FF0000;
-padding: 3px;
-}
-
-
-.art {
-color: #00ff00;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #00ff00;
-padding: 3px;
-transition:0.3s;
-}
-
-.art:hover {
-color: #FF0000;
-text-decoration: underline;
-text-decoration-color: #000000;
-border: 2px solid #FF0000;
-padding: 3px;
 }

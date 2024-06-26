@@ -3,7 +3,7 @@ window.addEventListener('scroll', function() {
     const screenWidth = window.innerWidth;
 
     // Check if screen width is less than 900px or if it can't be determined
-    if (screenWidth < 900 || !screenWidth) {
+    if (screenWidth > 900) {
         return; // Exit the function and don't run the rest of the script
     }
 
@@ -13,7 +13,7 @@ window.addEventListener('scroll', function() {
     ];
 
     const windowHeight = window.innerHeight;
-    const windowTop = window.scrollY + 300;
+    const windowTop = window.scrollY + 400;
     const windowBottom = windowTop + windowHeight;
 
     let visibleTarget = null;
@@ -24,7 +24,7 @@ window.addEventListener('scroll', function() {
         if (targetElement) {
             const targetRect = targetElement.getBoundingClientRect();
             const targetTop = targetRect.top + window.scrollY;
-            const targetBottom = targetTop + targetRect.height + 100;
+            const targetBottom = targetTop + targetRect.height +400;
 
             // Determine if target is within viewport
             if (targetTop <= windowTop && targetBottom >= windowTop && !visibleTarget) {
