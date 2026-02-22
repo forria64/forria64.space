@@ -1,0 +1,7 @@
+# robots.txt — the velvet rope outside the club.
+# Everyone's welcome, but we're pointing them to the map.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://forria64.space/sitemap.xml
