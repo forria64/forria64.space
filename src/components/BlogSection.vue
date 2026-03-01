@@ -113,7 +113,7 @@ function formatDate(iso: string): string {
     <pre class="blog-header"><span class="blink">^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^V^</span>
 ::::::::: SAMIZDAT — OPEN AS IN SOURCE, FREE AS IN SPEECH :::::::::
 <span class="blink">^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^V^</span>
-<br><span class="blink">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></pre>
+<br></pre>
 
     <div v-if="loading" class="blog-status">
       <pre>[ THE WIRE IS HOT... STAND BY ]</pre>
