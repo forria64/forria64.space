@@ -19,6 +19,7 @@ import AsciiHeader from '@/components/AsciiHeader.vue'
 import ContactLinks from '@/components/ContactLinks.vue'
 import ArrowDivider from '@/components/ArrowDivider.vue'
 import TechiesCreed from '@/components/TechiesCreed.vue'
+import BlogSection from '@/components/BlogSection.vue'
 
 useScrollBackground()
 </script>
@@ -35,6 +36,7 @@ useScrollBackground()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</pre>
       <ArrowDivider />
       <TechiesCreed />
+      <BlogSection />
     </div>
   </main>
 </template>
