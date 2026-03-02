@@ -29,6 +29,7 @@ const TARGET_BOTTOM_PADDING = 100
 /** The sacred list of scroll-triggered background hallucinations */
 const TARGETS: ScrollTarget[] = [
   { elementId: 'techies_creed', image: '/wave.gif', color: '#003366' },
+  { elementId: 'blog_section', image: '/log.gif', color: '#1a1a0a' },
 ]
 
 export function useScrollBackground(): void {

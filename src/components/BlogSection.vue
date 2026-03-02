@@ -109,7 +109,7 @@ function formatDate(iso: string): string {
 </script>
 
 <template>
-  <section class="blog-section" aria-label="Blog posts">
+  <section id="blog_section" class="blog-section" aria-label="Blog posts">
     <pre class="blog-header"><span class="blink">^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^V^</span>
 ::::::::: SAMIZDAT — OPEN AS IN SOURCE, FREE AS IN SPEECH :::::::::
 <span class="blink">^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^^V^V^V^V^V^V^V^</span>
