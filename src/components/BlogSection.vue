@@ -54,7 +54,7 @@ onMounted(() => fetchPosts())
  */
 async function fetchPosts(): Promise<void> {
   try {
-    const url = `${API_BASE}/api/collections/posts/records?perPage=200&sort=-id`
+    const url = `${API_BASE}/api/collections/posts/records?perPage=200&sort=-created`
     const res = await fetch(url)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data: PBListResponse = await res.json()
