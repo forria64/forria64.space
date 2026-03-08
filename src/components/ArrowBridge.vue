@@ -18,15 +18,13 @@ const ARROW_TIP_3 = "  ':`    ':`    ':`    ':`    ':`    ':`"
 const ROW_COUNT = 20
 
 /**
- * Compute letter-spacing per row — widest at center (6px),
- * tightest at edges (0px). Barrel distortion via typography.
+ * Compute letter-spacing per row — widest at top (6px),
+ * converging to tightest at bottom (0px). Eased funnel shape.
  */
 const rowStyles = computed(() => {
-  // Only apply lens effect to the arrow body rows, not the 3 tip rows
   return Array.from({ length: ROW_COUNT }, (_, i) => {
-    const center = (ROW_COUNT - 1) / 2
-    const dist = Math.abs(i - center) / center
-    const spacing = 6 * Math.cos(dist * Math.PI * 0.5)
+    const t = i / (ROW_COUNT - 1)
+    const spacing = 6 * Math.cos(t * Math.PI * 0.5)
     return { letterSpacing: `${spacing.toFixed(1)}px` }
   })
 })

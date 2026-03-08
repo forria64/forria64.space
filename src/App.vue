@@ -26,6 +26,22 @@ import ArrowBridge from '@/components/ArrowBridge.vue'
 
 const { scrollDepth, scrollY, layers } = useScrollBackground()
 
+/**
+ * Deep-link handler — if the URL hash points to a known section
+ * (other than blog post slugs, which BlogSection handles itself),
+ * scroll there once the page has settled.
+ */
+onMounted(async () => {
+  await nextTick()
+  const hash = window.location.hash.slice(1)
+  if (hash === 'techies_creed') {
+    setTimeout(() => {
+      const el = document.getElementById('techies_creed')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 400)
+  }
+})
+
 const terminalStyle = computed(() => ({
   '--scroll-depth': scrollDepth.value,
 }))

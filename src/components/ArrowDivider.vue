@@ -99,6 +99,7 @@ onUnmounted(() => {
 function scrollToCreed(): void {
   const target = document.getElementById('techies_creed')
   if (target) {
+    history.replaceState(null, '', '#techies_creed')
     target.scrollIntoView({ behavior: 'smooth' })
   }
 }

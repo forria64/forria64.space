@@ -11,7 +11,7 @@
 -->
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, reactive, onMounted, onUnmounted, nextTick } from 'vue'
 
 interface BlogPost {
   id: string
@@ -42,7 +42,100 @@ const posts = ref<BlogPost[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
 
-onMounted(() => fetchPosts())
+/** The slug of the currently expanded post, or null when all collapsed. */
+const expandedSlug = ref<string | null>(null)
+
+/** Refs to each post's collapsible body element, keyed by slug. */
+const bodyRefs: Record<string, HTMLElement | null> = {}
+/** Cached scrollHeights so the CSS transition has a target value. */
+const heights = reactive<Record<string, number>>({})
+
+function setBodyRef(slug: string, el: HTMLElement | null): void {
+  bodyRefs[slug] = el
+}
+
+/** Accordion toggle — opening one post closes the previous. */
+function togglePost(slug: string): void {
+  // Measure the natural height before toggling so CSS can transition to it.
+  const el = bodyRefs[slug]
+  if (el) heights[slug] = el.scrollHeight
+  const opening = expandedSlug.value !== slug
+  expandedSlug.value = opening ? slug : null
+  if (opening) {
+    // Scroll the article into view and update the URL hash.
+    nextTick(() => {
+      const article = document.getElementById(`post-${slug}`)
+      if (article) article.scrollIntoView({ behavior: 'smooth' })
+    })
+    history.replaceState(null, '', `#${slug}`)
+  } else {
+    history.replaceState(null, '', window.location.pathname)
+  }
+}
+
+/** Return inline style for the collapsible body. */
+function bodyStyle(slug: string): Record<string, string> {
+  const isOpen = expandedSlug.value === slug
+  return {
+    maxHeight: isOpen ? `${heights[slug] ?? 0}px` : '0',
+  }
+}
+
+/**
+ * Dummy transmissions for offline development.
+ * When PocketBase isn't running, these synthetic dispatches
+ * fill the void so you can tweak layout without a live backend.
+ */
+const DUMMY_POSTS: BlogPost[] = [
+  {
+    id: 'dummy-1',
+    title: 'First Dispatch from the Wire',
+    slug: 'first-dispatch',
+    content:
+      'The static clears. A signal emerges.\n' +
+      'We are broadcasting from coordinates unknown.\n' +
+      'The infrastructure is held together with duct tape and defiance.\n' +
+      'But it works. It works because we refuse to let it not work.\n' +
+      'End of line.',
+    published: true,
+    created: '2026-03-01T10:30:00.000Z',
+  },
+  {
+    id: 'dummy-2',
+    title: 'On the Merits of Staying Up Too Late',
+    slug: 'staying-up-late',
+    content:
+      '03:47 UTC — the hour when bad ideas feel like genius.\n' +
+      'The system agrees with you at this hour. It has no choice.\n' +
+      'You are the only consciousness left to argue with.\n' +
+      'Tomorrow you will read this diff and weep.\n' +
+      'But tonight, tonight you are infinite.',
+    published: true,
+    created: '2026-02-20T03:47:00.000Z',
+  },
+  {
+    id: 'dummy-3',
+    title: 'A Short Note',
+    slug: 'short-note',
+    content: 'This post has only one line and should not be truncated.',
+    published: true,
+    created: '2026-02-10T12:00:00.000Z',
+  },
+]
+
+/** Collapse all articles when clicking outside any title/timestamp area. */
+function onDocumentClick(e: MouseEvent): void {
+  const target = e.target as HTMLElement | null
+  if (target && !target.closest('.post-toggle')) {
+    expandedSlug.value = null
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', onDocumentClick)
+  fetchPosts()
+})
+onUnmounted(() => document.removeEventListener('click', onDocumentClick))
 
 /**
  * Reach into the void and pull back transmissions.
@@ -51,6 +144,8 @@ onMounted(() => fetchPosts())
  * and talk to the API directly with raw fetch, like animals.
  * Client-side filter for published status because the server's
  * filter syntax is equally uncooperative.
+ *
+ * Falls back to dummy posts when running in dev without PocketBase.
  */
 async function fetchPosts(): Promise<void> {
   try {
@@ -64,7 +159,13 @@ async function fetchPosts(): Promise<void> {
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e)
     console.error('[BlogSection] fetch failed:', e)
-    error.value = msg
+    if (import.meta.env.DEV) {
+      console.warn('[BlogSection] using dummy posts for local dev')
+      posts.value = DUMMY_POSTS
+      error.value = null
+    } else {
+      error.value = msg
+    }
   } finally {
     loading.value = false
   }
@@ -82,6 +183,10 @@ async function fetchPosts(): Promise<void> {
 function scrollToHashTarget(): void {
   const hash = window.location.hash.slice(1)
   if (!hash) return
+  // Auto-expand the targeted post so its content is visible.
+  const el = bodyRefs[hash]
+  if (el) heights[hash] = el.scrollHeight
+  expandedSlug.value = hash
   setTimeout(() => {
     const el = document.getElementById(`post-${hash}`)
     if (el) {
@@ -134,12 +239,27 @@ function formatDate(iso: string): string {
         :id="`post-${post.slug}`"
         class="blog-post"
       >
-        <pre class="post-meta">
-<span class="red-text">{{ post.title.toUpperCase() }}</span>
-<span class="post-date">{{ formatDate(post.created) }}</span>
-<span class="blink">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></pre>
-        <pre class="post-content">{{ post.content }}</pre>
-        <pre class="post-end"><span class="blink"><br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></pre>
+        <pre
+          class="post-meta post-toggle"
+          :class="{ 'is-expanded': expandedSlug === post.slug }"
+          role="button"
+          tabindex="0"
+          :aria-expanded="expandedSlug === post.slug"
+          @click="togglePost(post.slug)"
+          @keydown.enter.prevent="togglePost(post.slug)"
+          @keydown.space.prevent="togglePost(post.slug)"
+        >
+<span class="red-text">{{ expandedSlug === post.slug ? '[-] ' : '[+] ' }}{{ post.title.toUpperCase() }}</span>
+<span class="post-date">{{ formatDate(post.created) }}</span></pre>
+        <pre class="post-divider"><span class="blink">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></pre>
+        <div
+          class="post-body"
+          :ref="(el) => setBodyRef(post.slug, el as HTMLElement | null)"
+          :style="bodyStyle(post.slug)"
+        >
+          <pre class="post-content">{{ post.content }}</pre>
+          <pre class="post-spacer">&nbsp;</pre>
+        </div>
       </article>
     </template>
   </section>
@@ -177,10 +297,35 @@ function formatDate(iso: string): string {
   margin: 0;
 }
 
+/* Clickable title — cursor hint and red tinge on hover/active */
+.post-toggle {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.post-toggle:hover {
+  background-color: rgba(255, 0, 0, 0.08);
+}
+
+.post-toggle.is-expanded {
+  background-color: rgba(255, 0, 0, 0.12);
+}
 /* Timestamps — present but not screaming for attention */
 .post-date {
   opacity: 0.6;
   font-size: 0.9em;
+}
+
+/* Tilde divider between title area and content */
+.post-divider {
+  margin: 0;
+}
+
+/* Collapsible body wrapper — smooth reveal via max-height */
+.post-body {
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
 
 /* The body text — wraps like a civilized paragraph, not a scroll */
@@ -190,8 +335,7 @@ function formatDate(iso: string): string {
   word-wrap: break-word;
 }
 
-/* The tilde divider at the end — barely visible, like a sigh */
-.post-end {
+.post-spacer {
   margin: 0;
 }
 </style>
