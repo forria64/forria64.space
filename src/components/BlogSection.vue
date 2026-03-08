@@ -123,10 +123,10 @@ const DUMMY_POSTS: BlogPost[] = [
   },
 ]
 
-/** Collapse all articles when clicking outside any title/timestamp area. */
+/** Collapse all articles when clicking outside title/timestamp areas and expanded content. */
 function onDocumentClick(e: MouseEvent): void {
   const target = e.target as HTMLElement | null
-  if (target && !target.closest('.post-toggle')) {
+  if (target && !target.closest('.post-toggle') && !target.closest('.post-body')) {
     expandedSlug.value = null
   }
 }
@@ -304,8 +304,10 @@ function formatDate(iso: string): string {
   transition: background-color 0.2s ease;
 }
 
-.post-toggle:hover {
-  background-color: rgba(255, 0, 0, 0.08);
+@media (hover: hover) {
+  .post-toggle:hover {
+    background-color: rgba(255, 0, 0, 0.08);
+  }
 }
 
 .post-toggle.is-expanded {

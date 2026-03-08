@@ -68,9 +68,14 @@ function calculateRows(): void {
   rowCount.value = Math.max(arrowRows, MIN_ROWS)
 }
 
+/** Mobile breakpoint — matches App.vue's responsive threshold */
+const MOBILE_MAX = 900
+
 /** Debounce resize to avoid thrashing the DOM like a cornered animal */
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
 function onResize(): void {
+  // On mobile, lock the row count after initial render — no recalc on resize.
+  if (window.innerWidth <= MOBILE_MAX) return
   if (resizeTimer) clearTimeout(resizeTimer)
   resizeTimer = setTimeout(calculateRows, 100)
 }

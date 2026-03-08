@@ -223,10 +223,10 @@ const particleStyles = computed(() => {
     </div>
 
     <!-- Semicolon waterfall bridging content area to arcade zone -->
-    <ArrowBridge />
+    <ArrowBridge class="hide-on-mobile" />
 
     <!-- Arcade game — sits outside the content-container in its own black zone -->
-    <ArcadeGame />
+    <ArcadeGame class="hide-on-mobile" />
   </main>
 </template>
 
@@ -476,6 +476,10 @@ body {
 @media only screen and (max-width: 900px) {
   body {
     font-size: 9px;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
   }
 }
 
