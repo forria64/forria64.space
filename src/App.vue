@@ -219,7 +219,7 @@ const particleStyles = computed(() => {
       <div ref="creedEl">
         <TechiesCreed />
       </div>
-      <BlogSection />
+      <BlogSection class="hide-on-mobile" />
     </div>
 
     <!-- Semicolon waterfall bridging content area to arcade zone -->
