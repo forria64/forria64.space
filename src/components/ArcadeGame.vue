@@ -566,7 +566,7 @@ onUnmounted(() => {
 
 .arcade-title {
   color: #ffa5a3;
-  font-family: monospace;
+  font-family: 'NK57 Monospace', monospace;
   font-size: 14px;
   text-align: center;
   margin: 0 0 20px;

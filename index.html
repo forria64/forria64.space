@@ -39,6 +39,15 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 
+    <!-- === PRELOAD: FONTS (critical — prevents FOUT) === -->
+    <link rel="preload" href="/fonts/NK57-Monospace-No-Rg.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="/fonts/NK57-Monospace-No-Bd.otf" as="font" type="font/otf" crossorigin>
+
+    <!-- === PREFETCH: IMAGES (non-critical — loaded ahead of scroll) === -->
+    <link rel="prefetch" href="/banner.png" as="image">
+    <link rel="prefetch" href="/wave.gif" as="image">
+    <link rel="prefetch" href="/log.gif" as="image">
+
     <!-- === STRUCTURED DATA (JSON-LD) === -->
     <script type="application/ld+json">
       {

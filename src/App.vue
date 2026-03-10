@@ -264,7 +264,7 @@ const particleStyles = computed(() => {
   border-bottom: 2px dashed #ffa5a3;
   padding: 0 10px 10px;
   backdrop-filter: blur(10px);
-  font-family: monospace;
+  font-family: 'NK57 Monospace', monospace;
   position: relative;
   /* === EFFECT 3: REACTIVE GLOW BORDERS ===
      Border color intensifies as you descend into the page.
@@ -384,6 +384,24 @@ const particleStyles = computed(() => {
  * into the terminal and the terminal stared back.
  */
 
+/* ===== CUSTOM FONT ===== */
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('/fonts/NK57-Monospace-No-Rg.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('/fonts/NK57-Monospace-No-Bd.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== RESET & BODY ===== */
 
 /* Anchor rem units across browsers — the one true baseline */
@@ -398,7 +416,7 @@ body {
   min-height: 100%;
   margin: 0;
   font-size: 15px;
-  font-family: monospace;
+  font-family: 'NK57 Monospace', monospace;
   background-color: #000000;
   color: #ffa5a3;
   display: flex;
