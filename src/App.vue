@@ -328,7 +328,8 @@ const particleStyles = computed(() => {
 /* Shrink the terminal for pocket-sized devices */
 @media only screen and (max-width: 900px) {
   .content-container {
-    width: 365px;
+    width: calc(100vw - 16px);
+    box-sizing: border-box;
   }
 }
 
@@ -475,7 +476,7 @@ body {
 
 @media only screen and (max-width: 900px) {
   body {
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .hide-on-mobile {
