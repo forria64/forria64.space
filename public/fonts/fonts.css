@@ -15,7 +15,16 @@
 }
 
 /* Apply globally — ensures the font is used before Vue styles load */
+*, *::before, *::after {
+  font-family: 'NK57 Monospace', monospace;
+}
+
 html, body, pre, code, kbd, samp {
   font-family: 'NK57 Monospace', monospace;
   line-height: 1.6;
+}
+
+/* Force form elements and interactive controls to inherit the custom font */
+input, button, select, textarea, optgroup {
+  font-family: inherit;
 }
