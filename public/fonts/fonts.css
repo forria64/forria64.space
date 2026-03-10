@@ -17,4 +17,5 @@
 /* Apply globally — ensures the font is used before Vue styles load */
 html, body, pre, code, kbd, samp {
   font-family: 'NK57 Monospace', monospace;
+  line-height: 1.6;
 }
