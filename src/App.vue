@@ -476,7 +476,7 @@ body {
 
 @media only screen and (max-width: 900px) {
   body {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .hide-on-mobile {
