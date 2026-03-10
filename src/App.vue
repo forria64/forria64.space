@@ -384,29 +384,11 @@ const particleStyles = computed(() => {
  * into the terminal and the terminal stared back.
  */
 
-/* ===== CUSTOM FONT ===== */
-
-@font-face {
-  font-family: 'NK57 Monospace';
-  src: url('/fonts/NK57-Monospace-No-Rg.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'NK57 Monospace';
-  src: url('/fonts/NK57-Monospace-No-Bd.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ===== RESET & BODY ===== */
 
 /* Anchor rem units across browsers — the one true baseline */
 html {
-  font-size: 16px;
+  font-size: 13px;
   height: 100%;
   scrollbar-width: thin;
   scrollbar-color: #ffa5a3 #000000;
@@ -415,7 +397,7 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  font-size: 15px;
+  font-size: 13px;
   font-family: 'NK57 Monospace', monospace;
   background-color: #000000;
   color: #ffa5a3;

@@ -16,7 +16,8 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 let CANVAS_W = 640
 let CANVAS_H = 400
 let FONT_SIZE = 16
-let FONT = `${FONT_SIZE}px monospace`
+const FONT_FAMILY = "'NK57 Monospace', monospace"
+let FONT = `${FONT_SIZE}px ${FONT_FAMILY}`
 
 let PLAYER_Y_OFFSET = 30          // px from bottom
 const PLAYER_SPEED = 5              // px per frame
@@ -219,7 +220,7 @@ function draw(): void {
 
   // HUD
   ctx.fillStyle = '#ffa5a3'
-  ctx.font = `${FONT_SIZE - 2}px monospace`
+  ctx.font = `${FONT_SIZE - 2}px ${FONT_FAMILY}`
   ctx.textAlign = 'center'
   ctx.fillText(`SCORE: ${score.value}   WAVE: ${wave}   HI: ${hiScore.value}`, CANVAS_W / 2, CANVAS_H - 6)
   ctx.textAlign = 'start'
@@ -242,12 +243,12 @@ function idleLoop(): void {
 
   // Title
   ctx.fillStyle = '#ffa5a3'
-  ctx.font = `${FONT_SIZE + 4}px monospace`
+  ctx.font = `${FONT_SIZE + 4}px ${FONT_FAMILY}`
   ctx.fillText('k e r n e l . p a n i c', CANVAS_W / 2, CANVAS_H / 2 - 70)
 
   // Subtitle
   ctx.fillStyle = '#ffa5a3'
-  ctx.font = `${FONT_SIZE - 2}px monospace`
+  ctx.font = `${FONT_SIZE - 2}px ${FONT_FAMILY}`
   ctx.fillText('[ rogue processes descending ]', CANVAS_W / 2, CANVAS_H / 2 - 35)
 
   // Controls
@@ -282,7 +283,7 @@ function idleLoop(): void {
 
   // HUD
   ctx.fillStyle = '#ffa5a3'
-  ctx.font = `${FONT_SIZE - 2}px monospace`
+  ctx.font = `${FONT_SIZE - 2}px ${FONT_FAMILY}`
   ctx.textAlign = 'center'
   ctx.fillText(`SCORE: ${score.value}   WAVE: ${wave}   HI: ${hiScore.value}`, CANVAS_W / 2, CANVAS_H - 6)
   ctx.textAlign = 'start'
@@ -346,7 +347,7 @@ function deathLoop(): void {
   // ── static noise phase ──
   if (deathFrame > 30 && deathFrame < 120) {
     const noiseAlpha = Math.min(0.6, (deathFrame - 30) / 60)
-    ctx.font = `${FONT_SIZE - 4}px monospace`
+    ctx.font = `${FONT_SIZE - 4}px ${FONT_FAMILY}`
     const cols = Math.floor(CANVAS_W / 8)
     const rows = Math.floor(CANVAS_H / 10)
     for (let r = 0; r < rows; r++) {
@@ -372,13 +373,13 @@ function deathLoop(): void {
     // Glitch shadow
     if (deathFrame < 100 && Math.random() > 0.5) {
       ctx.fillStyle = `rgba(0, 255, 255, ${textAlpha * 0.5})`
-      ctx.font = `${FONT_SIZE + 6}px monospace`
+      ctx.font = `${FONT_SIZE + 6}px ${FONT_FAMILY}`
       ctx.fillText('K E R N E L   P A N I C', CANVAS_W / 2 + glitchOffset - 2, CANVAS_H / 2 - 28)
     }
 
     // Main text
     ctx.fillStyle = `rgba(255, 165, 163, ${textAlpha})`
-    ctx.font = `${FONT_SIZE + 6}px monospace`
+    ctx.font = `${FONT_SIZE + 6}px ${FONT_FAMILY}`
     ctx.fillText('K E R N E L   P A N I C', CANVAS_W / 2 + glitchOffset, CANVAS_H / 2 - 30)
 
     ctx.font = FONT
@@ -497,7 +498,7 @@ onMounted(() => {
 
     // Scale down font, grid, and spacing for mobile
     FONT_SIZE = 12
-    FONT = `${FONT_SIZE}px monospace`
+    FONT = `${FONT_SIZE}px ${FONT_FAMILY}`
     PLAYER_Y_OFFSET = 24
     ENEMY_DROP = FONT_SIZE + 3
     ENEMY_COLS = Math.min(8, Math.floor((CANVAS_W - 40) / 36))
