@@ -572,6 +572,8 @@ onUnmounted(() => {
   text-align: center;
   margin: 0 0 20px;
   line-height: 1.3;
+  align-self: center;
+  width: fit-content;
 }
 
 .arcade-cabinet {
@@ -624,7 +626,9 @@ onUnmounted(() => {
   }
   .arcade-title {
     font-size: 12px;
-    margin: 10px 0 30px;
+    margin: 10px auto 30px;
+    width: fit-content;
+    max-width: 100%;
   }
 }
 </style>

@@ -37,6 +37,16 @@
   line-height: 1.2;
 }
 
+@media only screen and (max-width: 900px) {
+  .ascii-block {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
 /* "THE SPACE" blinks because we live on the edge */
 .space-banner {
   color: #ff0000;

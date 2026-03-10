@@ -339,6 +339,16 @@ const particleStyles = computed(() => {
   text-align: center;
 }
 
+@media only screen and (max-width: 900px) {
+  .section-divider {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
 /* === EFFECT 2: AMBIENT FLOATING PARTICLES ===
    Dust motes that only move when you scroll. Positions are
    computed in JS with modulo wrapping so they loop endlessly
@@ -476,7 +486,16 @@ body {
 
 @media only screen and (max-width: 900px) {
   body {
-    font-size: 10px;
+    font-size: 7px;
+  }
+
+  pre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   .hide-on-mobile {

@@ -18,10 +18,10 @@
  */
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
-const ARROW_LINE = '     ;;;;;      ;;;;;     ;;;;;     ;;;;;     ;;;;;     ;;;;;'
-const ARROW_TIP_1 = '   ..;;;;;..  ..;;;;;.. ..;;;;;.. ..;;;;;.. ..;;;;;.. ..;;;;;..'
-const ARROW_TIP_2 = "    ':::::'    ':::::'   ':::::'   ':::::'   ':::::'   ':::::'"
-const ARROW_TIP_3 = "      ':`        ':`       ':`       ':`       ':`       ':`"
+const ARROW_LINE = '  ;;;;;      ;;;;;     ;;;;;     ;;;;;     ;;;;;     ;;;;;'
+const ARROW_TIP_1 = '..;;;;;..  ..;;;;;.. ..;;;;;.. ..;;;;;.. ..;;;;;.. ..;;;;;..'
+const ARROW_TIP_2 = " ':::::'    ':::::'   ':::::'   ':::::'   ':::::'   ':::::'"
+const ARROW_TIP_3 = "   ':`        ':`       ':`       ':`       ':`       ':`"
 
 /** How many tip lines eat into the available space */
 const TIP_LINE_COUNT = 4
@@ -121,7 +121,9 @@ function scrollToCreed(): void {
 /* The gradient text treatment — blood and void, animated */
 .arrows {
   display: flex;
-  margin: 0;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
   cursor: pointer;
   background: linear-gradient(150deg, red, black, #ffa5a3);
   background-size: 500% 100%;

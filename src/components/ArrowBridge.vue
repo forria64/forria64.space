@@ -77,6 +77,16 @@ const rowStyles = computed(() => {
   }
 }
 
+@media (max-width: 900px) {
+  .arrow-bridge {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
 @media (max-width: 680px) {
   .arrow-bridge {
     line-height: 1;
