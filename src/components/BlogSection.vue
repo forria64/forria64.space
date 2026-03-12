@@ -154,8 +154,6 @@ async function fetchPosts(): Promise<void> {
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data: PBListResponse = await res.json()
     posts.value = data.items.filter((p) => p.published)
-    await nextTick()
-    scrollToHashTarget()
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e)
     console.error('[BlogSection] fetch failed:', e)
@@ -168,6 +166,8 @@ async function fetchPosts(): Promise<void> {
     }
   } finally {
     loading.value = false
+    await nextTick()
+    scrollToHashTarget()
   }
 }
 
