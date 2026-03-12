@@ -625,7 +625,7 @@ onUnmounted(() => {
     height: auto;
   }
   .arcade-title {
-    font-size: 12px;
+    font-size: 8px;
     margin: 10px auto 30px;
     width: fit-content;
     max-width: 100%;

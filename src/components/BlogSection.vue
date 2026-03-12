@@ -340,34 +340,4 @@ function formatDate(iso: string): string {
 .post-spacer {
   margin: 0;
 }
-
-/* === MOBILE: center the whole section horizontally === */
-@media only screen and (max-width: 900px) {
-  .blog-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .blog-header,
-  .blog-status pre,
-  .post-divider,
-  .post-spacer {
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
-  .blog-post {
-    width: fit-content;
-    max-width: 100%;
-  }
-
-  .post-meta,
-  .post-content {
-    text-align: left;
-  }
-}
 </style>

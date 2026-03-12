@@ -125,13 +125,5 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 900px) {
-  .scroll-target {
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-}
+
 </style>

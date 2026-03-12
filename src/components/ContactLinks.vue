@@ -158,11 +158,5 @@ const assignedColors = shuffleArray(NEON_PALETTE).slice(0, LINKS.length)
   cursor: pointer;
 }
 
-/* Tighter pills on small screens — less padding so they don't crowd each other */
-@media only screen and (max-width: 900px) {
-  .contact {
-    padding: 2px 6px;
-    font-size: 1em;
-  }
-}
+
 </style>

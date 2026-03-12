@@ -44,7 +44,13 @@ onMounted(async () => {
 
 const terminalStyle = computed(() => ({
   '--scroll-depth': scrollDepth.value,
+  zoom: windowWidth.value < 900
+    ? Math.min(1, (windowWidth.value - 16) / 624)
+    : undefined,
 }))
+
+/** Reactive viewport width — drives the mobile zoom factor */
+const windowWidth = ref(window.innerWidth)
 
 /** Height of the black-background zone (top of page to top of creed) */
 const creedTop = ref(0)
@@ -59,6 +65,7 @@ function measureCreed(): void {
 
 let resizeTimer: ReturnType<typeof setTimeout> | null = null
 function onResize(): void {
+  windowWidth.value = window.innerWidth
   if (resizeTimer) clearTimeout(resizeTimer)
   resizeTimer = setTimeout(measureCreed, 100)
 }
@@ -219,14 +226,14 @@ const particleStyles = computed(() => {
       <div ref="creedEl">
         <TechiesCreed />
       </div>
-      <BlogSection class="hide-on-mobile" />
+      <BlogSection />
     </div>
 
     <!-- Semicolon waterfall bridging content area to arcade zone -->
-    <ArrowBridge class="hide-on-mobile" />
+    <ArrowBridge />
 
     <!-- Arcade game — sits outside the content-container in its own black zone -->
-    <ArcadeGame class="hide-on-mobile" />
+    <ArcadeGame />
   </main>
 </template>
 
@@ -253,6 +260,8 @@ const particleStyles = computed(() => {
   flex: 1;
   font-weight: bold;
   position: relative;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* The terminal window — dashed borders, fixed width, fills the viewport */
@@ -325,13 +334,7 @@ const particleStyles = computed(() => {
   100% { background-position: 0 0, 0 100%; }
 }
 
-/* Shrink the terminal for pocket-sized devices */
-@media only screen and (max-width: 900px) {
-  .content-container {
-    width: calc(100vw - 16px);
-    box-sizing: border-box;
-  }
-}
+
 
 /* The tilde divider — same treatment as the header's dividers */
 .section-divider {
@@ -339,15 +342,7 @@ const particleStyles = computed(() => {
   text-align: center;
 }
 
-@media only screen and (max-width: 900px) {
-  .section-divider {
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-}
+
 
 /* === EFFECT 2: AMBIENT FLOATING PARTICLES ===
    Dust motes that only move when you scroll. Positions are
@@ -401,6 +396,7 @@ const particleStyles = computed(() => {
 html {
   font-size: 13px;
   height: 100%;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #ffa5a3 #000000;
 }
@@ -485,19 +481,6 @@ body {
 /* Shrink the madness to fit your pocket rectangle */
 
 @media only screen and (max-width: 900px) {
-  body {
-    font-size: 7px;
-  }
-
-  pre {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
   .hide-on-mobile {
     display: none !important;
   }

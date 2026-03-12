@@ -8,12 +8,29 @@
 -->
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 
-const ARROW_LINE  = ';;;;;  ;;;;;  ;;;;;  ;;;;;  ;;;;;  ;;;;;'
-const ARROW_TIP_1 = '..;;;;;..;;;;;..;;;;;..;;;;;..;;;;;..;;;;;..'
-const ARROW_TIP_2 = " ':::'  ':::'  ':::'  ':::'  ':::'  ':::'"
-const ARROW_TIP_3 = "  ':`    ':`    ':`    ':`    ':`    ':`"
+const ARROW_LINE_WIDE  = ';;;;;  ;;;;;  ;;;;;  ;;;;;  ;;;;;  ;;;;;'
+const ARROW_TIP_1_WIDE = '..;;;;;..;;;;;..;;;;;..;;;;;..;;;;;..;;;;;..'
+const ARROW_TIP_2_WIDE = " ':::'  ':::'  ':::'  ':::'  ':::'  ':::'"
+const ARROW_TIP_3_WIDE = "  ':`    ':`    ':`    ':`    ':`    ':`"
+
+const ARROW_LINE_NARROW  = ';;;;;  ;;;;;  ;;;;;  ;;;;;'
+const ARROW_TIP_1_NARROW = '..;;;;;..;;;;;..;;;;;..;;;;;..'
+const ARROW_TIP_2_NARROW = " ':::'  ':::'  ':::'  ':::'"
+const ARROW_TIP_3_NARROW = "  ':`    ':`    ':`    ':`"
+
+const windowWidth = ref(window.innerWidth)
+function onResize() { windowWidth.value = window.innerWidth }
+onMounted(() => window.addEventListener('resize', onResize))
+onUnmounted(() => window.removeEventListener('resize', onResize))
+
+const isMobile = computed(() => windowWidth.value < 900)
+
+const ARROW_LINE  = computed(() => isMobile.value ? ARROW_LINE_NARROW : ARROW_LINE_WIDE)
+const ARROW_TIP_1 = computed(() => isMobile.value ? ARROW_TIP_1_NARROW : ARROW_TIP_1_WIDE)
+const ARROW_TIP_2 = computed(() => isMobile.value ? ARROW_TIP_2_NARROW : ARROW_TIP_2_WIDE)
+const ARROW_TIP_3 = computed(() => isMobile.value ? ARROW_TIP_3_NARROW : ARROW_TIP_3_WIDE)
 
 const ROW_COUNT = 20
 
@@ -74,23 +91,6 @@ const rowStyles = computed(() => {
 @media (prefers-reduced-motion: reduce) {
   .arrow-bridge {
     animation: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .arrow-bridge {
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-}
-
-@media (max-width: 680px) {
-  .arrow-bridge {
-    line-height: 1;
-    font-size: 7px;
   }
 }
 </style>
